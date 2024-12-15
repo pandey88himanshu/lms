@@ -5,6 +5,7 @@ import {
   useAddNewQuestionMutation,
   useAddReplyInReviewMutation,
   useAddReviewInCourseMutation,
+  useGetCourseContentQuery,
   useGetCourseDetailsQuery,
 } from "@/redux/features/courses/coursesApi";
 import Image from "next/image";
@@ -55,7 +56,7 @@ const CourseContentMedia = ({
     addNewQuestion,
     { isSuccess, error, isLoading: questionCreationLoading },
   ] = useAddNewQuestionMutation();
-  const { data: courseData, refetch: courseRefetch } = useGetCourseDetailsQuery(
+  const { data: courseData, refetch: courseRefetch } = useGetCourseContentQuery(
     id,
     { refetchOnMountOrArgChange: true }
   );
@@ -203,7 +204,7 @@ const CourseContentMedia = ({
   console.log("courseddta end");
   return (
     <div className='w-[95%] 800px:w-[86%] py-4 m-auto'>
-      <CoursePlayer videoId={courseData?.videoUrl} />
+      <CoursePlayer videoId={courseData?.content[0].videoUrl} />
 
       <div className='w-full flex items-center justify-between my-3'>
         <div

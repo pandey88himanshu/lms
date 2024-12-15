@@ -13,7 +13,6 @@ pnpm-debug.log*
 lerna-debug.log*
 yarn.lock
 .env
-package-lock.json
 node_modules
 dist
 dist-ssr
